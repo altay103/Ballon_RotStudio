@@ -56,7 +56,9 @@ public class BallonController : MonoBehaviour
         }
 
         SoundManager.instance.PlayPop();
-        Instantiate(popEffect, transform.position, Quaternion.identity).GetComponent<ParticleSystem>().GetComponent<Renderer>().material.color = ballonData.color;
+        GameObject popObj = Instantiate(popEffect, transform.position, Quaternion.identity);
+        popObj.GetComponent<ParticleSystem>().GetComponent<Renderer>().material.color = ballonData.color;
+        Destroy(popObj, 5);
         Destroy(gameObject);
 
     }
